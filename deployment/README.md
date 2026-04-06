@@ -26,6 +26,21 @@ Services:
 - Swagger: `http://localhost:8000/docs`
 - PostgreSQL: `localhost:5432`
 
+## Remote access (open from another PC)
+
+When opening the UI from another PC, `localhost` will not work (it points to the other PC).
+
+Update `deployment/.env` (do not commit machine-specific IPs; keep this local):
+- `VITE_API_BASE_URL=http://<SERVER_LAN_IP>:8000`
+- Add the origin to CORS:
+  - `CORS_ORIGINS=...,http://<SERVER_LAN_IP>:5173`
+
+Then rebuild containers so frontend picks up the env:
+
+```powershell
+deployment\scripts\task.ps1 -Action rebuild
+```
+
 ## DB Deployment Best Practices Used
 
 - Official `postgres:16` image
