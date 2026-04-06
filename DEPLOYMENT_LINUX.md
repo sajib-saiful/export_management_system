@@ -80,18 +80,6 @@ docker compose --env-file deployment/.env -f deployment/docker-compose.yml down
 docker compose --env-file deployment/.env -f deployment/docker-compose.yml down -v
 ```
 
-### 2.5 Optional Linux helper scripts
-
-From project root:
-
-```bash
-chmod +x deployment/scripts/*.sh
-deployment/scripts/up.sh all
-deployment/scripts/logs.sh all
-deployment/scripts/task.sh restart-backend
-deployment/scripts/down.sh 0
-```
-
 ---
 
 ## 3) Create Docker Images from Running Containers

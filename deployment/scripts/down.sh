@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REMOVE_VOLUMES="${1:-0}" # pass 1 to remove volumes
+REMOVE_VOLUMES="${1:-}"  # -v optional
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-COMPOSE_FILE="$ROOT_DIR/deployment/docker-compose.yml"
+COMPOSE="$ROOT_DIR/deployment/docker-compose.yml"
 ENV_FILE="$ROOT_DIR/deployment/.env"
 
-ARGS=(--env-file "$ENV_FILE" -f "$COMPOSE_FILE" down)
-if [[ "$REMOVE_VOLUMES" == "1" ]]; then
+ARGS=(--env-file "$ENV_FILE" -f "$COMPOSE" down)
+if [[ "$REMOVE_VOLUMES" == "-v" ]]; then
   ARGS+=(-v)
 fi
 
