@@ -5,7 +5,3 @@ __pycache__/
 node_modules/
 dist/
 
-# Local env files (never commit secrets)
-backend/.env
-deployment/.env
-
